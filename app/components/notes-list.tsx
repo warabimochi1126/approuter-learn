@@ -1,6 +1,5 @@
 import type { Database } from "@/database.types"
 import { format } from "date-fns"
-import { resolve } from "path"
 
 type Note = Database["public"]["Tables"]["notes"]["Row"]
 
