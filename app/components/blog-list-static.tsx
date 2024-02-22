@@ -1,21 +1,22 @@
 import Link from "next/link"
 import type { Database } from "@/database.types"
 
-type Note = Database["public"]["Tables"]["notes"]["Row"]
+type Blog = Database["public"]["Tables"]["blogs"]["Row"]
 
 async function fetchBlogs() {
-  const res = await fetch(`${process.env.url}/rest/v1/notes?select=*`, {
+  const res = await fetch(`${process.env.url}/rest/v1/blogs?select=*`, {
       headers: new Headers({
           apikey: process.env.apikey as string
       }),
-      cache: "no-store"
+      // cache: "no-store"
+      cache: "force-cache"
   });
 
   if (!res.ok) {
       throw new Error("Failed to fetch data in server");
   }
-  const notes: Note[] = await res.json();
-  return notes;
+  const blogs: Blog[] = await res.json();
+  return blogs;
 }
 
 export default async function BlogListStatic() {
