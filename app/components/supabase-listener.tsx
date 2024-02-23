@@ -7,10 +7,12 @@ import useStore from '../../store'
 
 export default function SupabaseListener({ accessToken }: { accessToken?: string }) {
     const router = useRouter();
+
     const { updateLoginUser } = useStore();
     useEffect(() => {
         const getUserInfo = async () => {
             const { data } = await supabase.auth.getSession()
+            console.log(data);
             if (data.session) {
                 updateLoginUser({
                     id: data.session?.user.id,
@@ -26,9 +28,7 @@ export default function SupabaseListener({ accessToken }: { accessToken?: string
               router.refresh()
             }
         })
-    }, [accessToken])
+    }, [accessToken]);
 
-    return (
-        <div>aaaa</div>
-    );
- }
+    return null;
+}

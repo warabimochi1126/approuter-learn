@@ -25,7 +25,7 @@ export default function Auth() {
             if (error) {
               alert(error.message)
             } else {
-              router.push('/')
+              router.push('/auth/todo-crud')
             }
           } else {
             const { error } = await supabase.auth.signUp({
@@ -43,7 +43,7 @@ export default function Auth() {
     function signOut() {
         supabase.auth.signOut()
     }
-
+    
     return (
         <div className='flex flex-col items-center justify-center'>
             <p>{ loginUser.email }</p>
@@ -93,6 +93,4 @@ export default function Auth() {
             </p>
         </div>
     )
-
-  
 }

@@ -9,9 +9,8 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
         cookies,
       });
 
-      const { data: { session } } = await supabase.auth.getSession()
-      
-
+    const { data: { session } } = await supabase.auth.getSession()
+    
     return (
     <>
         <SupabaseListener accessToken={session?.access_token} />
@@ -19,4 +18,3 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
     </>
     )
 }
-  
